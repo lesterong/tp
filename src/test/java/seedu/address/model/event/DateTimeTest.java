@@ -20,7 +20,7 @@ public class DateTimeTest {
     }
 
     @Test
-    public void isValidEmail() {
+    public void isValidDateTime() {
         // null date
         assertThrows(NullPointerException.class, () -> DateTime.isValidDateTime(null));
 
