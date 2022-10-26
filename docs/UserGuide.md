@@ -48,7 +48,9 @@ NUScheduler is a desktop app for **managing contacts, optimised for use via a Co
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
+* For `Event` and `Profile` commands, option flags (`-x` where `x` is a placeholder for valid flags e.g. `a`, `d`, `v`) must be used after the `event` and `profile` command word
+
+* The other parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 * If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
@@ -161,11 +163,12 @@ Displays a list of upcoming events, ordered by the date, for the next specified 
 
 Format: `event -u DAYS`
 
-* The days refer to the number of days from the current date. All events within this time frame will be displayed.
+* The days refer to the number of days after the current date. All events within this time frame will be displayed. Events
+oncurring on the day the command is entered will not be displayed.
 * The days **must be a positive integer** 1, 2, 3, ...
 
 Example:
-* `event -u 5` displays all events taking place in the next 5 days ordered by date.
+* `event -u 5` when used on `22-10-2022` displays all events taking place in the next 5 days from `23-10-22` to `27-10-22` with both dates included.
 
 ### Viewing all events: `event -v`
 
