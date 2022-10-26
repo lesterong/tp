@@ -63,11 +63,15 @@ NUScheduler is a desktop app for **managing contacts, optimised for use via a Co
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+Opens a help window displaying all the recognised commands, and a link to access the user guide.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Open the help window using <kbd>F1</kbd> on your keyboard
+</div>
 
 ### Adding a profile: `profile -a`
 
@@ -76,7 +80,7 @@ Adds a profile to NUScheduler.
 Format: `profile -a n/NAME p/PHONE_NUMBER e/EMAIL [tg/TELEGRAM_USERNAME] [t/TAG]…`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A profile can have 0 or more tags
+A profile can have 0 or more tags.
 </div>
 
 Examples:
@@ -140,12 +144,15 @@ Example:
 
 ### Adding an event: `event -a`
 
-Adds an event with a name and a start timing and end timing.
+Adds an event with a name, a start timing and end timing.
 
-Format: `event -a n/NAME s/START e/END [p/PROFILE]…`
+Format: `event -a n/TITLE s/START e/END [t/TAG]… [p/PROFILE]…`
+
+* The start and end dates can be specified in [various formats](#accepted-date-time-formats).
+* The start date must occur before or on the same day and time as the end date.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-An event can have 0 or more profiles
+An event can have 0 or more profiles. An event can have 0 or more tags.
 </div>
 
 ### Viewing upcoming events: `event -u`
@@ -166,16 +173,29 @@ Shows a list of all events in the NUScheduler.
 
 Format: `event -v`
 
-### Finding events by name: `event -f KEYWORD [MORE_KEYWORDS]`
+### Editing a event : `event -e`
 
-Find events whose names contain any of the given keywords.
+Edits an existing event in NUScheduler.
 
-* The search is case-insensitive. e.g `birthday` will match `Birthday`
-* The order of the keywords does not matter. e.g. `one two` will match `two one`
-* Only the name of the event is searched.
-* Only full words will be matched e.g. `Birth` will not match `Birthday`
-* Events matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `interview meeting` will return `Meeting Tom`, `Job Interview`
+Format: `event -e INDEX [n/TITLE] [s/START] [e/END] [t/TAG]… [p/PROFILE]…`
+
+* Edits the event at the specified `INDEX`. The index refers to the index number shown in the displayed event list. The index **must be a positive integer** 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the event will be removed i.e adding of tags is not cumulative.
+* You can remove all the event’s tags by typing `t/` without specifying any tags after it.
+* The start and end dates can be specified in [various formats](#accepted-date-time-formats).
+
+### Finding events by date or title: `event -f KEYWORD_OR_DATE [MORE]`
+
+Find events whose title contain any of the given keywords or start times contain any of the given start times.
+
+* Date search will occur when all inputs are [valid dates](#accepted-date-time-formats), otherwise, keyword search will occur.
+* The date search occurs only by date, ignoring the time, e.g. `11/10/2022 08:00` will match any events that start on `11/10/2022`.
+* The keyword search is case-insensitive. e.g `birthday` will match `Birthday`.
+* The order of the keywords does not matter. e.g. `one two` will match `two one`.
+* Partial match will also be returned. e.g. `inter` will match `interview`
+* Events matching at least one keyword will be returned (i.e. `OR` search) e.g. `interview meeting` will return `Meeting Tom`, `Job Interview`.
 
 ### Deleting an event: `event -d`
 
@@ -190,17 +210,66 @@ Format: `event -d INDEX`
 Example:
 * `event -v` followed by `event -d 2` deletes the 2nd event displayed.
 
+### Clearing all profiles and events: `clear`
+
+Clears all profiles and events from the NUScheduler.
+
+Format: `clear`
+
 ### Exiting the program: `exit`
 
 Exits the program.
 
 Format: `exit`
 
+### Advanced Features
+
+###### Session-Based Command History
+
+NUScheduler keeps track of all the successful commands you've made within each session.
+
+* Use the up arrow key, <kbd>&#8593;</kbd> to navigate to the previous command.
+* Use the down arrow key, <kbd>&#8595;</kbd> to navigate to the next command.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Notes about the command history**:
+
+* Every time NUScheduler is closed, the command history is reset.
+* Edits made on the command history are not tracked.
+
+</div>
+
+###### Tag Shortcuts
+
+Lorem Ipsum
+
+###### Quick Links
+
+Get easy access to some of your favourite NUS websites, right from the menu. 
+
+1. Click on `Links` in the menu bar. A dropdown should appear.
+2. Click on the link you want to visit, if you want to visit `Canvas`, click on `Canvas`.
+3. The website should open in your browser.
+
+<div markdown="block" class="alert alert-primary">
+
+:bulb: **Tips:**
+
+* Press <kbd> F2 </kbd> to open LumiNUS.
+* Press <kbd> F3 </kbd> to open Canvas.
+* Press <kbd> F4 </kbd> to open EduRec.
+
+</div>
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
-No FAQ Yet.
+### Accepted Date Time Formats
+
+Lorem ipsum
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -213,8 +282,9 @@ No FAQ Yet.
 | **Edit Profile**           | `profile -e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [tg/TELEGRAM_USERNAME] [t/TAG]…` |
 | **View Profiles**          | `profile -v`                                                                    |
 | **Find Profile**           | `profile -f KEYWORD [MORE_KEYWORDS]`                                            |
-| **Add Event**              | `event -a n/NAME s/START e/END [p/PROFILE]…`                                    |
+| **Add Event**              | `event -a n/TITLE s/START e/END [t/TAG]… [p/PROFILE]…`                          |
 | **Delete Event**           | `event -d INDEX`                                                                |
+| **Edit Event**             | `event -e INDEX [n/TITLE] [s/START] [e/END] [t/TAG]… [p/PROFILE]…`              |
 | **View Events**            | `event -v`                                                                      |
 | **View Upcoming Event(s)** | `event -u DAYS`                                                                 |
-| **Find Event**             | `event -f KEYWORD [MORE_KEYWORDS]`                                              |
+| **Find Event**             | `event -f KEYWORD_OR_DATE [MORE]`                                               |
