@@ -57,7 +57,7 @@
 
           <VBox styleClass="pane-with-border" minWidth="500" HBox.hgrow="ALWAYS">
             <padding>
-              <Insets top="5" right="5" bottom="10" left="0" />
+              <Insets top="5" right="0" bottom="10" left="0" />
             </padding>
             <StackPane fx:id="eventListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
