@@ -59,6 +59,8 @@ NUScheduler is a desktop app for **managing contacts, optimised for use via a Co
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+* In the display, `Profile`s will be ordered alphabetically while `Event`s will be ordered chronologically by their start date.
+
 </div>
 
 
