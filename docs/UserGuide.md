@@ -63,7 +63,7 @@ NUScheduler is a desktop app for **managing contacts, optimised for use via a Co
 
 
 
-### Viewing help : `help`
+### Viewing help: `help`
 
 Opens a help window displaying all the recognised commands, and a link to access the user guide.
 
@@ -96,7 +96,7 @@ Shows a list of all profiles in the NUScheduler.
 
 Format: `profile -v`
 
-### Editing a profile : `profile -e`
+### Editing a profile: `profile -e`
 
 Edits an existing profile in NUScheduler.
 
@@ -176,7 +176,7 @@ Shows a list of all events in the NUScheduler.
 
 Format: `event -v`
 
-### Editing a event : `event -e`
+### Editing a event: `event -e`
 
 Edits an existing event in NUScheduler.
 
@@ -227,9 +227,9 @@ Format: `exit`
 
 ### Advanced Features
 
-###### Session-Based Command History
+#### Session-Based Command History
 
-NUScheduler keeps track of all the successful commands you've made within each session.
+Access the previous commands you've made within each session.
 
 * Use the up arrow key, <kbd>&#8593;</kbd> to navigate to the previous command.
 * Use the down arrow key, <kbd>&#8595;</kbd> to navigate to the next command.
@@ -238,18 +238,33 @@ NUScheduler keeps track of all the successful commands you've made within each s
 
 :information_source: **Notes about the command history**:
 
+* Only successful commands are tracked, commands that results in an error are not stored.
 * Every time NUScheduler is closed, the command history is reset.
 * Edits made on the command history are not tracked.
 
 </div>
 
-###### Tag Shortcuts
+#### Tag Aliases
 
-Lorem Ipsum
+Use aliases to quickly enter tags.
 
-###### Quick Links
+Example: 
 
-Get easy access to some of your favourite NUS websites, right from the menu. 
+* `events -e 1 t/tut` Edits the tag of the 1st event shown to `tutorial`.  
+
+| Alias | Result       | 
+|-------|--------------|
+| assm  | assignment   |
+| lec   | lecture      |
+| pres  | presentation |
+| rec   | recitation   |
+| ta    | tutor        |
+| tut   | tutorial     |
+
+
+#### Quick Links
+
+Get easy access to some of your favourite NUS websites, right from the menu.
 
 1. Click on `Links` in the menu bar. A dropdown should appear.
 2. Click on the link you want to visit, if you want to visit `Canvas`, click on `Canvas`.
@@ -272,7 +287,50 @@ Get easy access to some of your favourite NUS websites, right from the menu.
 
 ### Accepted Date Time Formats
 
-Lorem ipsum
+NUScheduler accepts date-time formats both with and without a time specified. For example, date-only formats can be used to specify all day events.
+
+#### Date-only formats
+
+- dd/MM/yyyy
+- dd-MM-yyyy
+- dd MM yyyy
+- dd/MM/yy
+- dd-MM-yy
+- dd MM yy
+- dd/MM (uses current year by default)
+- dd-MM (uses current year by default)
+- dd MM (uses current year by default)
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the date format:**<br>
+
+* Days can be specified with either one or two digits. e.g. `5` and `05` both refer to the same day.
+* Months can be specified with either digits or letters. e.g. `3`, `03`, `mar` and `march` all refer to the same month.
+* Years must be specified with four digits. e.g. `2022`
+
+</div>
+
+#### Date time formats
+
+The following time formats can be appended after a whitespace to the end of any of the above date formats.
+
+- HH:mm
+- HHmm
+- HH:mm:ss
+- HHmmss
+
+Example:
+* `25/05/2015 10:00`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the date format:**<br>
+
+* Hours, minutes and seconds must be specified using two digits.
+* `dd MM HHmm` is not supported, and will be recognised as `dd MM yyyy`.
+
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
