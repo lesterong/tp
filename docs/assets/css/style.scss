@@ -111,7 +111,8 @@ h6:before {
   counter-increment: h6;
 }
 
-#markdown-toc, #markdown-toc ul {
+#markdown-toc, #markdown-toc ul,
+#sidebar-toc, #sidebar-toc ul {
   list-style-type: none;
   counter-reset: item;
   margin-left: 0;
@@ -123,26 +124,30 @@ h6:before {
 }
 
 // Second Level
-#markdown-toc > li > ul > li {
+#markdown-toc > li > ul > li,
+#sidebar-toc > li > ul > li {
   margin-left: 20px;
 }
 
 // Third Level
-#markdown-toc > li > ul > li > ul > li {
+#markdown-toc > li > ul > li > ul > li,
+#sidebar-toc > li > ul > li > ul > li {
   margin-left: 28px;
 }
 
 // Fourth Level
-#markdown-toc > li > ul > li > ul > li > ul > li {
+#markdown-toc > li > ul > li > ul > li > ul > li,
+#sidebar-toc > li > ul > li > ul > li > ul > li {
   margin-left: 34px;
 }
 
 // Fifth Level
-#markdown-toc > li > ul > li > ul > li > ul > li > ul > li {
+#markdown-toc > li > ul > li > ul > li > ul > li > ul > li,
+#sidebar-toc > li > ul > li > ul > li > ul > li {
   margin-left: 42px;
 }
 
-#markdown-toc li:before {
+#markdown-toc li:before, #sidebar-toc li:before {
   content: counters(item, ".") ". ";
   counter-increment: item;
 }
@@ -160,4 +165,23 @@ h6:before {
 
 .meaning-icons-container > ul li > img {
   vertical-align: text-top;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  padding: 16px 20px;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+.hide {
+  display: none;
+}
+
+#sidebar > ul > li:first-child {
+  display: none;
 }
