@@ -12,8 +12,10 @@ layout: default
   </div>
 
   {%- if page.title == "User Guide" or page.title == "Developer Guide" -%}
-  <div id="sidebar" class="hidden-print">
-  {% include toc.html html=content %}
+  <div id="sidebar-bg" onclick="handleSidebar()">
+    <div id="sidebar" class="hidden-print">
+    {% include toc.html html=content %}
+    </div>
   </div>
   <div class="toc-button hidden-print" onclick="handleSidebar()">
     <svg id="open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff">
@@ -34,6 +36,7 @@ layout: default
   const content = document.querySelector(".post-content")
   const header = document.querySelector(".post-title")
   const sidebar = document.querySelector("#sidebar")
+  const sidebarBg = document.querySelector("#sidebar-bg")
   const openIcon = document.querySelector("#open-icon")
   const closeIcon = document.querySelector("#close-icon")
   sidebar.children[0].id = "sidebar-toc" // set id of sidebar ul
@@ -50,6 +53,7 @@ layout: default
     } else {
       button.style.opacity = "0";
       sidebar.style.width = "0";
+      sidebarBg.style.opacity = "0";
       closeIcon.classList.add("hide")
       openIcon.classList.remove("hide")
     }
@@ -60,12 +64,14 @@ layout: default
       sidebar.style.width = "0";
       closeIcon.classList.add("hide")
       openIcon.classList.remove("hide")
+      sidebarBg.style.opacity = "0";
     } else {
       if (window.innerWidth < 440) {
         sidebar.style.width = window.innerWidth + "px"
       } else {
         sidebar.style.width = "440px";
       }
+      sidebarBg.style.opacity = "1";
       closeIcon.classList.remove("hide")
       openIcon.classList.add("hide")
     }
