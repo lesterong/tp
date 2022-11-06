@@ -61,7 +61,11 @@ layout: default
       closeIcon.classList.add("hide")
       openIcon.classList.remove("hide")
     } else {
-      sidebar.style.width = "440px";
+      if (window.innerWidth < 440) {
+        sidebar.style.width = window.innerWidth + "px"
+      } else {
+        sidebar.style.width = "440px";
+      }
       closeIcon.classList.remove("hide")
       openIcon.classList.add("hide")
     }
