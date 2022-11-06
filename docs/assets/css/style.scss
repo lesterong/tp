@@ -173,13 +173,10 @@ h6:before {
   bottom: 0;
   right: 0;
   overflow-y: scroll;
-  padding: 16px 20px;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
-}
-
-.hide {
-  display: none;
+  transition: all 0.3s ease;
+  width: 0;
 }
 
 #sidebar > ul > li:first-child {

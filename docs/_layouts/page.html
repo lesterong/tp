@@ -12,7 +12,7 @@ layout: default
   </div>
 
   {%- if page.title == "User Guide" or page.title == "Developer Guide" -%}
-  <div id="sidebar" class="hidden-print hide">
+  <div id="sidebar" class="hidden-print">
   {% include toc.html html=content %}
   </div>
   <div class="toc-button hidden-print" onclick="handleSidebar()">
@@ -27,8 +27,11 @@ layout: default
 <script>
   const button = document.querySelector(".toc-button")
   button.style.opacity = "0";
+  const post = document.querySelector(".post")
   const content = document.querySelector(".post-content")
   const header = document.querySelector(".post-title")
+  const sidebar = document.querySelector("#sidebar")
+  sidebar.children[0].id = "sidebar-toc" // set id of sidebar ul
   let height = header.offsetHeight + 140 // adjustment for margins
   for (let i = 0; i < content.children.length; ++i) {
     if (content.children[i].tagName === "HR") {
@@ -41,14 +44,16 @@ layout: default
       button.style.opacity = "1";
     } else {
       button.style.opacity = "0";
+      sidebar.style.width = "0";
     }
   }
-
-  const sidebar = document.querySelector("#sidebar")
-  sidebar.children[0].id = "sidebar-toc"
   function handleSidebar() {
-    sidebar.classList.toggle("hide");
-    console.log("hello")
+    console.log(sidebar.offsetWidth)
+    if (sidebar.offsetWidth > 0) {
+      sidebar.style.width = "0";
+    } else {
+      sidebar.style.width = "440px";
+    }
   }
 </script>
 {%- endif -%}
