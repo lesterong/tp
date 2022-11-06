@@ -179,6 +179,14 @@ h6:before {
   width: 0;
 }
 
+#sidebar-toc {
+  margin: 16px 20px;
+}
+
 #sidebar > ul > li:first-child {
+  display: none;
+}
+
+.hide {
   display: none;
 }

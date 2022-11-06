@@ -16,8 +16,11 @@ layout: default
   {% include toc.html html=content %}
   </div>
   <div class="toc-button hidden-print" onclick="handleSidebar()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff">
+    <svg id="open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff">
       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+    <svg id="close-icon" class="hide" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </div>
   {%- endif -%}
@@ -31,6 +34,8 @@ layout: default
   const content = document.querySelector(".post-content")
   const header = document.querySelector(".post-title")
   const sidebar = document.querySelector("#sidebar")
+  const openIcon = document.querySelector("#open-icon")
+  const closeIcon = document.querySelector("#close-icon")
   sidebar.children[0].id = "sidebar-toc" // set id of sidebar ul
   let height = header.offsetHeight + 140 // adjustment for margins
   for (let i = 0; i < content.children.length; ++i) {
@@ -45,14 +50,20 @@ layout: default
     } else {
       button.style.opacity = "0";
       sidebar.style.width = "0";
+      closeIcon.classList.add("hide")
+      openIcon.classList.remove("hide")
     }
   }
   function handleSidebar() {
     console.log(sidebar.offsetWidth)
     if (sidebar.offsetWidth > 0) {
       sidebar.style.width = "0";
+      closeIcon.classList.add("hide")
+      openIcon.classList.remove("hide")
     } else {
       sidebar.style.width = "440px";
+      closeIcon.classList.remove("hide")
+      openIcon.classList.add("hide")
     }
   }
 </script>
