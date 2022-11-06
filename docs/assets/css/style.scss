@@ -26,6 +26,7 @@ html {
   display: flex;
   align-items: center;
   transition: all 0.2s ease;
+  z-index: 2;
 }
 
 .toc-button:hover {
@@ -200,4 +201,5 @@ h6:before {
   height: 100vh;
   opacity: 0;
   transition: all 0.2s ease;
+  z-index: -1;
 }

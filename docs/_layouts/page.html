@@ -65,6 +65,7 @@ layout: default
     closeIcon.classList.add("hide")
     openIcon.classList.remove("hide")
     sidebarBg.style.opacity = "0";
+    sidebarBg.style.zIndex = "-1";
   }
 
   function openSidebar() {
@@ -74,6 +75,7 @@ layout: default
       sidebar.style.width = "440px";
     }
     sidebarBg.style.opacity = "1";
+    sidebarBg.style.zIndex = "1";
     closeIcon.classList.remove("hide")
     openIcon.classList.add("hide")
   }
