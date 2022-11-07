@@ -29,3 +29,17 @@ window.onscroll = function () {
         button.style.opacity = "0";
     }
 }
+
+// Set line breaks
+for (let i = 0; i < content.children.length; ++i) {
+    // Have line breaks before all H2
+    if (content.children[i].tagName === "H2") {
+        if (content.children[i].textContent === "Setting up, getting started") {
+            continue
+        }
+        console.log(content.children[i].textContent)
+        const div = document.createElement("div")
+        div.style.pageBreakAfter = "always"
+        content.children[i - 1].appendChild(div)
+    }
+}

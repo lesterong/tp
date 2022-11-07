@@ -199,6 +199,8 @@ Examples:
 * `profile -a n/Jane Smith e/jane_s@u.nus.edu p/91234580 tg/jane_s`
 * `profile -a n/Betsy Crowe e/betsycrowe@u.nus.edu p/1234567 t/professor t/lecturer`
 
+<div style="page-break-after: always"></div>
+
 #### Viewing all profiles: `profile -v`
 
 Shows a list of all profiles in the NUScheduler.
@@ -255,6 +257,8 @@ Format: `profile -d INDEX`
 Example:
 * `profile -d 1` deletes the first profile listed.
 
+<div style="page-break-after: always"></div>
+
 ### Events
 
 <div markdown="block" class="alert alert-info">
@@ -293,6 +297,8 @@ An event can have 0 or more tags.<br>
 Example:
 * `event -a n/Presentation s/22/10/2022 e/23/10/2022 t/CS2103`
 
+<div style="page-break-after: always"></div>
+
 #### Adding a profile to an event: `event -ap`
 
 Adds one or more existing profiles as attendees to an existing event in NUScheduler.
@@ -311,6 +317,8 @@ If a profile has been added to an event as an attendee, deleting the profile fro
 
 Example:
 * `event -ap 1 pr/1 pr/2` adds the first and second profiles listed to the first event listed.
+
+<div style="page-break-after: always"></div>
 
 #### Deleting an attendee from an event: `event -dp`
 
@@ -373,6 +381,8 @@ The start and end dates can be specified in various formats. See [Accepted Date 
 Example:
 * `event -e 1 n/Formal Dinner t/RC4` edits the title of the first event in the displayed list to `Formal Dinner` and clears existing tags before adding the tag `RC4`.
 
+<div style="page-break-after: always"></div>
+
 #### Finding events by date or title: `event -f`
 
 Finds events whose title contain any of the given keywords or start times contain any of the given start times.
@@ -402,6 +412,8 @@ Format: `event -d INDEX`
 
 Example:
 * `event -v` followed by `event -d 2` deletes the 2nd event displayed.
+
+<div style="page-break-after: always"></div>
 
 ### General
 
@@ -452,6 +464,8 @@ Access the previous commands you've made within each session.
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### Tag shortcuts
 
 Use shortcuts to quickly enter tags.
@@ -470,6 +484,8 @@ Example:
 | rec      | recitation   |
 | ta       | tutor        |
 | tut      | tutorial     |
+
+<div style="page-break-after: always"></div>
 
 #### Quick links
 
@@ -523,6 +539,8 @@ NUScheduler accepts date-time formats both with and without a time specified. Fo
 * `YEAR` must be specified with four digits. e.g. `2022`.
 
 </div>
+
+<div style="page-break-after: always"></div>
 
 #### Date time formats
 
