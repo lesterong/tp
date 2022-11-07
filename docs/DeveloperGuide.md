@@ -51,6 +51,8 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 Given below is a quick overview of main components and how they interact with each other.
 
+<div style="page-break-after: always"></div>
+
 **Main components of the architecture**
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2223S1-CS2103T-T17-3/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2223S1-CS2103T-T17-3/tp/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
@@ -78,11 +80,15 @@ Each of the four main components (also shown in the diagram above),
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
+<div style="page-break-after: always"></div>
+
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <img src="images/ComponentManagers.png" width="300" />
 
 The sections below give more details of each component.
+
+<div style="page-break-after: always"></div>
 
 ### UI component
 
@@ -100,6 +106,8 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Profile` and `Event` objects residing in the `Model`.
+
+<div style="page-break-after: always"></div>
 
 ### Logic component
 
@@ -130,6 +138,8 @@ How the parsing works:
 * For other general commands, `YCommandParser` creates `YCommand` (e.g., `ClearCommand`, `ExitCommand`) which is returned by `NuSchedulerParser` as a `Command` object.
 * All `XCommandParser`, `YCommandParser` and `ZXCommandParser` classes implements the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+<div style="page-break-after: always"></div>
+
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2223S1-CS2103T-T17-3/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
@@ -143,12 +153,15 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
+<div style="page-break-after: always"></div>
+
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below (`Event` is ommitted for simplification). It has a `Tag` list in the `NuScheduler`, which `Profile` references. This allows `NuScheduler` to only require one `Tag` object per unique tag, instead of each `Profile` needing their own `Tag` objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
 </div>
 
+<div style="page-break-after: always"></div>
 
 ### Storage component
 
@@ -190,6 +203,8 @@ The `AddProfileCommand` extends the `ProfileCommand` abstract class. `ProfileCom
 5. The `LogicManager` will call `Command#execute()` method of the `AddProfileCommand`, which will then create a new `Profile` using the `Model#addProfile()` method.
 6. When the command completes successfully, a `CommandResult` object is returned to the `LogicManager`, which will then display a success message to the user.
 
+<div style="page-break-after: always"></div>
+
 The following sequence diagram shows how the `AddProfileCommand` works.
 
 ![AddProfileCommandSequenceDiagram](images/commands/AddProfileCommandSequenceDiagram.png)
@@ -197,6 +212,8 @@ The following sequence diagram shows how the `AddProfileCommand` works.
 The following activity diagram shows the process when a user calls the `AddProfileCommand`.
 
 ![AddProfileCommandActivityDiagram](images/commands/AddProfileCommandActivityDiagram.png)
+
+<div style="page-break-after: always"></div>
 
 #### Design Considerations
 
@@ -217,6 +234,8 @@ Since both `DeleteProfileCommand` and `DeleteEventCommand` are implemented in a 
 
 The `DeleteProfileCommand` extends the `ProfileCommand` abstract class. `ProfileCommand` is an abstract class which extends the `Command` class. `DeleteProfileCommand` overrides the `Command#execute()` method, to delete the specified profile when called.
 
+<div style="page-break-after: always"></div>
+
 #### Implementation
 
 1. When the user inputs a command to delete a profile, the input is passed to `LogicManager` to be executed.
@@ -232,6 +251,8 @@ The following sequence diagram shows how the `DeleteProfileCommand` works.
 
 ![DeleteProfileCommandSequenceDiagram](images/commands/DeleteProfileCommandSequenceDiagram.png)
 
+<div style="page-break-after: always"></div>
+
 The following activity diagram shows the process when a user calls the `DeleteProfileCommand`.
 
 ![DeleteProfileCommandActivityDiagram](images/commands/DeleteProfileCommandActivityDiagram.png)
@@ -239,6 +260,8 @@ The following activity diagram shows the process when a user calls the `DeletePr
 #### Design Considerations
 
 The design considerations for the delete commands and the add commands are largely similar, please refer to the [Design Considerations](#design-considerations) for the add commands for more details.
+
+<div style="page-break-after: always"></div>
 
 ### Edit Command
 
@@ -259,6 +282,8 @@ The `EditProfileCommand` extends the `ProfileCommand` abstract class. `ProfileCo
 5. The method `EditProfileCommandParser#parse()` will then pass this `EditProfileDescriptor` object as a parameter to create a new `EditProfileCommand`. The `EditProfileCommand` is then returned, if the user has entered the correct inputs. 
 6. The `LogicManager` will call `Command#execute()` method of the `EditProfileCommand`, which will then update the `Profile` with the new details, using the `Model#setProfile()` method.
 7. When the command completes successfully, a `CommandResult` object is returned to the `LogicManager`, which will then display a success message to the user.
+
+<div style="page-break-after: always"></div>
 
 The following sequence diagram shows how the `EditProfileCommand` works.
 
@@ -290,6 +315,8 @@ The `ViewProfileCommand` extends the `ProfileCommand` abstract class. `ProfileCo
 4. `Model#updateFilteredProfileList()` method will then update the `FilteredList` to contain all `Profile`s, which will then be reflected on the terminal.
 5. At the end of method, a `CommandResult` object will be returned which will be used to indicate a successful execution of the command in the display.
 
+<div style="page-break-after: always"></div>
+
 The following sequence diagram shows what happens when `ViewCommand` gets executed.
 
 ![ViewProfileCommandSequenceDiagram](images/commands/ViewProfileCommandSequenceDiagram.png)
@@ -297,6 +324,8 @@ The following sequence diagram shows what happens when `ViewCommand` gets execut
 The following activity diagram summarizes what happens when a user executes a view command.
 
 ![ViewProfileCommandActivityDiagram](images/commands/ViewProfileCommandActivityDiagram.png)
+
+<div style="page-break-after: always"></div>
 
 ### View Upcoming Events Command
 
@@ -315,6 +344,8 @@ The `ViewUpcomingEventsCommand` class extends the `EventCommand` abstract class.
 5. The `LogicManager` will call `Command#execute()` method of the `ViewUpcomingEventsCommand`, which will then call `Model#updateFilteredEventList()` to display the desired events.
 6. When the command completes successfully, a `CommandResult` object is returned to the `LogicManager`, which will then display a success message to the user.
 
+<div style="page-break-after: always"></div>
+
 The following sequence diagram shows what happens when `ViewUpcomingEventsCommand` gets executed.
 
 ![ViewUpcomingEventsCommandSequenceDiagram](images/commands/ViewUpcomingEventsCommandSequenceDiagram.png)
@@ -322,6 +353,8 @@ The following sequence diagram shows what happens when `ViewUpcomingEventsComman
 The following activity diagram summarizes what happens when a user executes a view upcoming events command.
 
 ![ViewUpcomingEventsCommandActivityDiagram](images/commands/ViewUpcomingEventsCommandActivityDiagram.png)
+
+<div style="page-break-after: always"></div>
 
 ### Add Profiles To Event Command
 
@@ -340,6 +373,8 @@ Similar to other commands, the user input to add attendees is passed to `LogicMa
 
 Given below is an example usage scenario on how `AddProfilesToEventCommand` can be used and how it works.
 
+<div style="page-break-after: always"></div>
+
 Step 1. The user clears all the data in the application with the `ClearCommand`and then enters the following commands:
 
 * `profile -a n/John ...` - adds a `Profile` with the name "John"
@@ -354,6 +389,8 @@ Step 2. The user executes `event -ap 1 n/1` to add the `Profile` John of `Index`
 <div markdown="span" class="alert alert-info">:information_source: **Note:** Multiple profiles can be added at once. If one or more of the specified profiles has already been added to the event as an attendee, the command will still execute successfully. However, if any of the specified indexes are out of bounds, an error is returned to the user.
 
 </div>
+
+<div style="page-break-after: always"></div>
 
 The following sequence diagram illustrates how the operation works.
 
@@ -423,6 +460,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                             | view individual events                                   | know its timing and who is involved                           |
 | `* *`    | user                             | view upcoming events                                     | plan my schedule for the near future                          |
 
+<div style="page-break-after: always"></div>
+
 ### Use cases
 
 (For all use cases below, the **System** is the `NUScheduler` and the **Actor** is the `user`, unless specified otherwise)
@@ -462,6 +501,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 2.
 
+<div style="page-break-after: always"></div>
+
 **Use case: UC03 - Add an event**
 
 **MSS**
@@ -498,6 +539,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+<div style="page-break-after: always"></div>
+
 **Use case: UC05 - Add attendees to event**
 
 **Preconditions**: Must have at least one profile and one event.
@@ -531,6 +574,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. A user's individual schedule should not be accessible to other users.
 7. The _GUI_ should display data logic warnings when commands are entered with incomplete fields.
 8. The _GUI_ should be at least 1000 by 700 pixels to clearly display all information.
+
+<div style="page-break-after: always"></div>
 
 ### Glossary
 
@@ -605,6 +650,8 @@ Expected: No profile is added. Error details shown in the status message.
    3. Test case: `profile -v Bernice`<br>
       Expected: The profile list remains the same. Error details shown in the status message.
 
+<div style="page-break-after: always"></div>
+
 ### Finding a Profile by name
 
 1. Finding a profile by name from all profiles in NUScheduler
@@ -634,6 +681,8 @@ Expected: No profile is added. Error details shown in the status message.
 
    4. Other incorrect delete commands to try: `profile -d`, `profile -d x`, `...` (where x is larger than the list size, or 1000)<br>
       Expected: Similar to previous.
+
+<div style="page-break-after: always"></div>
    
 ### Adding an Event
 
